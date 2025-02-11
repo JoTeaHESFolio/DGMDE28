@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe - Version 2</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #ffccd5;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .square {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        border: 1px solid #ff4d6d;
+        cursor: pointer;
+        background-color: #ff99aa;
+        color: #ff1a4b;
+      }
+      .square:hover {
+        background-color: #ffb3c1;
+      }
+      #turnIndicator,
+      #winCondition {
+        font-size: 1.5em;
+        margin-top: 10px;
+        border: 2px solid #ff4d6d;
+        padding: 10px;
+        display: inline-block;
+        min-width: 200px;
+        background-color: #ffe5ec;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      document.write("<h1>DGMD E28 Assignment 2</h1>");
+      alert("Welcome to Version 2 of Tic Tac Toe!");
+    </script>
+    <p>Hello, this is my Tic Tac Toe board for Assignment 2</p>
+
+    <div id="turnIndicator">It is the Owner of a Lonely ❤'s turn!</div>
+
+    <div class="board" id="board"></div>
+    <script>
+      const NUM_SQUARES = 9;
+      const board = document.querySelector(".board");
+      const predefinedMoves = { 1: "X", 3: "❤", 6: "X" };
+
+      for (let i = 0; i < NUM_SQUARES; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        square.id = "sq${i}";
+
+        //set predefined moves
+        if (predefinedMoves[i]) {
+          square.textContent = predefinedMoves[i];
+        }
+
+        board.appendChild(square);
+      }
+    </script>
+  </body>
+</html>
