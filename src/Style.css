@@ -1,0 +1,81 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Board: a vertical stack of 6 horizontal rows */
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Row: horizontal arrangement of 5 letters */
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+/* Each letter cell */
+.letter {
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #aaa;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+/* Color classes */
+.correct {
+  background-color: #a51c30; /* Harvard Crimson */
+  color: white;
+}
+
+.present {
+  background-color: #0a304e;
+  color: white;
+}
+
+.absent {
+  background-color: #a7a8aa; /* Harvard Grey */
+  color: black;
+}
+
+.empty {
+  background-color: white;
+  color: black;
+}
+
+/* Keyboard layout */
+.keyboard {
+  margin-top: 30px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.key {
+  padding: 10px 12px;
+  margin: 2px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
