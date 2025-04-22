@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/DGMDE28/wordgame-jsx/static/css/main.9d6d198b.css",
+    "main.js": "/DGMDE28/wordgame-jsx/static/js/main.710ef32a.js",
+    "index.html": "/DGMDE28/wordgame-jsx/index.html",
+    "main.9d6d198b.css.map": "/DGMDE28/wordgame-jsx/static/css/main.9d6d198b.css.map",
+    "main.710ef32a.js.map": "/DGMDE28/wordgame-jsx/static/js/main.710ef32a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d6d198b.css",
+    "static/js/main.710ef32a.js"
+  ]
+}
