@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship 6x6</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 20px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(6, 50px);
+        grid-template-rows: repeat(6, 50px);
+        gap: 2px;
+        margin: 20px auto;
+        width: max-content;
+      }
+      .cell {
+        width: 50px;
+        height: 50px;
+        background-color: lightgray;
+        border: 1px solid #333;
+        cursor: pointer;
+      }
+      .hit {
+        background-color: red;
+      }
+      .miss {
+        background-color: gray;
+      }
+      .ship-reveal {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Battleship 6x6</h1>
+    <h2>Welcome to Battleship</h2>
+    <p>Prepare to sink your opponent's ships!</p>
+    <button id="start-btn">Start Game</button>
+    <button id="reset-btn" disabled>Reset Game</button>
+    <p id="status">Guesses left: <span id="guesses-left">20</span></p>
+    <div class="grid" id="grid"></div>
+    <p id="end-message"></p>
+
+    <script src="game.js"></script>
+  </body>
+</html>

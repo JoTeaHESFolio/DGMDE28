@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship Game</title>
+    
+    .gameboard {
+        width: 600px;
+        height: 600px;
+        display: grid;
+        grid-template-columns: repeat(6, 100px);
+        grid-template-rows: repeat(6, 100px);
+        gap: 1px;
+        margin: 20px auto;
+    }
+    .cell {
+        width: 100px;
+        height: 100px;
+        background-color: lightgray;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+      
+    .ship1 {
+        background-color: red;
+    }
+
+    .ship1-preview {
+        width: 20px;
+        height: 10px;
+        margin: 3px;
+    }
+    .ship2 {
+        background-color: orange;
+    }
+
+    .ship2-preview {
+        width: 30px;
+        height: 10px;
+        margin: 3px;
+    }
+    .ship3 {
+        background-color: blue;
+    }
+
+    .ship3-preview {
+        width: 40px;
+        height: 10px;
+        margin: 3px;
+    }
+</head>
+<body>
+ <h1>Welcome to Battleship</h1>
+    <p>Prepare to sink your opponent's ships!</p>
+    <div id="game-details"></div>
+
+    <p>Guesses: <span id="guesses left"></span></p>
+    <p>Info: <span id="info"></span></p>
+
+</div>
+
+<div class="grid">
+//needs to work with battleship.json file
+<div id='0' class="ship1-preview ship1" draggable="true"</div>
+<div id='1' class="ship2-preview ship2" draggable="true"</div>
+<div id='2' class="ship3-preview ship3" draggable="true"</div>
+
+//operations
+</div>
+   <button id="start-game">Start Game</button>
+    <button id="reset-game">Reset Game</button>
+
+<script>
+const document.querySelector('.option-container')
+const flipShip document.querySelector('#flip-ship')
+const gameboardContainer = document.querySelector('#gameboard-container');
+
+
+let angle = 0;
+function flipShip() {
+    const optionShips= Array.from(optionsContainer.children);
+    if (angle === 0) {
+        angle = 90;
+    } else {
+        angle = 0;
+    }
+    optionShips.forEach(ship => optionShip.style.transform = `rotate(${angle}deg)`);{
+        ship.addEventListener('dragstart', (e) => {
+            e.dataTransfer.setData('text/plain', ship.className);
+        });
+    });
+    const ship = document.querySelector('.ship1-preview');
+    ship.style.transform = ship.style.transform === 'scaleX(-1)' ? 'scaleX(1)' : 'scaleX(-1)';
+}
+flipShip.addEventListener('click', flipShip);
+
+const width = 10;
+
+function createGameboard() {
+
+    const gameboardContainer = document.createElement('div');
+    gameboardContainer.classList.add('gameboard');
+    gameboardContainer.style.backgroundColor = 'lightblue';
+
+    document.body.appendChild(gameboardContainer);
+        for (let i = 0; i < 100; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+        gameboardContainer.appendChild(cell);
+    }
+createGameboard();
+}
+//set up ships 
+class ship {
+    constructor(name, length) {
+        this.name = name;
+        this.length = length;
+        this.hits = Array(length).fill(false);
+    }
+const ship1 = new Ship('ship1', 2);
+const ship2 = new Ship('ship2', 3);
+const ship3 = new Ship('ship3', 4);
+
+const ships = [ship1, ship2, ship3];
+
+function addShip() {
+    const ship = document.createElement('div');
+
+//position ship on the gameboard
+    let shipCells = [];
+    for (let i = 0; i < ship.length; i++) {
+        let index = randomDirection === 'horizontal' ? randomIndex + i : randomIndex + i * width;
+        shipCells.push(index);
+    }
+
+    let valid
+//other ideas for placement
+    if (isHorizontal) {
+        shipCells.every((_shipCell, index) => 
+        valid = shipCell[0].id % width !== width - (shipCell.length - (index + 1)))
+    } else { 
+        shipCells.every((_shipCell, index) => 
+        valid = shipCell[0].id <90 + (width * index + 1)
+        )
+    }
+    const notTaken = shipCells.every(shipCell => {
+        return !cell.classList.contains('taken');
+    }); 
+
+    if (valid && notTaken) {
+        shipCells.forEach(index => {
+            const cell = document.querySelector(`.cell[data-index="${index}"]`);
+            cell.classList.add(ship.name);
+            cell.classList.add('ship');
+            cell.classList.add('taken');
+        })
+    } else {
+        addShip(ship);
+    }
+    
+ships.forEach(ship =>  addship(ship));{
+//engage ships   
+}
+let startShip
+const optionShips = Array.from(optionsContainer.children)
+optionShips.forEach(optionShip => {
+    optionShip.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', optionShip.className);
+    
+const allPlayerCells = document.querySelectorAll('#player div')
+allPlayerCells.forEach(cell => {
+    playerCell.addEventListener('dragover', dragOver)
+    playerCell.addEventListener('drop', dropShip)
+        e.preventDefault();
+    });
+    function dragStart(e) {
+        startShip = e.target
+    }
+    function dragOver(e) {
+        e.preventDefault();
+    }
+    function dropShip(e) {
+        const startID = e.target.id
+        const ship = ships[startShip.dataset.ship]
+    }
+});
+//register hits
+addShipsToGameboard(ships) {
+        this.position = null;
+        this.direction = null;
+    }
+    placeShip(start, direction) {
+        this.position = start;
+        this.direction = direction;
+    }
+
+    hit(index) {
+        this.hits[index] = true;
+    }
+
+    isSunk() {
+        return this.hits.every(hit => hit);
+    }
+}
+
+
+</script>
+    
+</body>
+</html>

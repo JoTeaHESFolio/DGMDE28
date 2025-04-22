@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Tic Tac Toe - Version 2</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #2f8d59;
+      }
+      .board {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+        justify-content: center;
+        margin-top: 20px;
+        min-height: 310px;
+      }
+      .square {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        border: 1px solid #0000a0;
+        cursor: pointer;
+        background-color: #1092b4;
+        color: white;
+      }
+      .square:hover {
+        background-color: #3baf6f;
+      }
+      #turnIndicator {
+        font-size: 1.5em;
+        margin-top: 10px;
+        border: 2px solid #0000a0;
+        padding: 10px;
+        display: inline-block;
+        min-width: 200px;
+        background-color: #9cdfbe;
+      }
+      #winCondition {
+        font-size: 1.5em;
+        margin-top: 20px;
+        border: 2px solid #0000a0;
+        padding: 10px;
+        display: inline-block;
+        min-width: 200px;
+        background-color: #9cdfbe;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DGMD E28 Assignment 2c</h1>
+
+    <p>
+      Hello, this is my Tic Tac Toe board for Assignment 2c. Let's get started.
+    </p>
+    <p>
+      Click on a square to place your mark. The game will alternate between 'X'
+      and '🌍'.
+    </p>
+    <button onclick="initializeBoard()">Start Game</button>
+    <div id="turnIndicator">Game not started</div>
+    <div id="winCondition"></div>
+    <div class="board" id="board"></div>
+
+    <script>
+      const NUM_SQUARES = 9;
+      let currentPlayer;
+      let moves;
+
+      document.getElementById("board").innerHTML = Array.from(
+        { length: NUM_SQUARES },
+        (_, i) => `<div class='square' id='sq${i}'></div>`
+      ).join("");
+      const initializeBoard = () => {
+        const board = document.getElementById("board");
+        const turnIndicator = document.getElementById("turnIndicator");
+        const winCondition = document.getElementById("winCondition");
+        const squares = document.querySelectorAll(".square");
+
+        console.log("resetting board...");
+
+        moves = Array(NUM_SQUARES).fill("-");
+        squares.forEach((square) => {
+          square.textContent = "";
+          square.style.pointerEvents = "auto";
+        });
+
+        winCondition.textContent = "";
+
+        currentPlayer = Math.random() < 0.5 ? "X" : "🌍";
+        turnIndicator.textContent = `It is ${currentPlayer}'s turn!`;
+
+        squares.forEach((square) => {
+          square.replaceWith(square.cloneNode(true));
+        });
+
+        addSquareListeners();
+
+        board.style.display = "block";
+        requestAnimationFrame(() => (board.style.display = "grid"));
+      };
+
+      const addSquareListeners = () => {
+        const squares = document.querySelectorAll(".square");
+
+        moves = Array.from(squares).map((square) => square.textContent || "-");
+        squares.forEach((square, index) => {
+          square.addEventListener("click", () => handleMove(index, square));
+        });
+      };
+
+      const handleMove = (index, square) => {
+        if (moves[index] !== "-") return;
+
+        moves[index] = currentPlayer;
+        square.textContent = currentPlayer;
+
+        if (checkWin()) {
+          document.getElementById(
+            "winCondition"
+          ).textContent = `${currentPlayer} wins! 🎉`;
+          disableBoard();
+          return;
+        }
+        if (!moves.includes("-")) {
+          document.getElementById(
+            "winCondition"
+          ).textContent = `It's a tie! 🤝`;
+          disableBoard();
+          return;
+        }
+        currentPlayer = currentPlayer === "X" ? "🌍" : "X";
+        document.getElementById(
+          "turnIndicator"
+        ).textContent = `It is ${currentPlayer}'s turn!`;
+      };
+
+      const disableBoard = () => {
+        document.querySelectorAll(".square").forEach((square) => {
+          square.style.pointerEvents = "none";
+        });
+      };
+
+      const checkWin = () => {
+        const winConditions = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8], //rows
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8], //columns
+          [0, 4, 8],
+          [2, 4, 6], //diagonals
+        ];
+        return winConditions.some((condition) =>
+          condition.every((index) => moves[index] === currentPlayer)
+        );
+      };
+
+      window.onload = () => initializeBoard();
+    </script>
+  </body>
+</html>
